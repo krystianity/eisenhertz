@@ -1,0 +1,31 @@
+{
+    "name": "eisenhertz",
+    "version": "1.1.0",
+    "description": "manage, cluster and scale processes with ease",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "keywords": [
+        "scale",
+        "cluster",
+        "process",
+        "queue",
+        "job",
+        "kubernetes",
+        "leader",
+        "zookeeper",
+        "election",
+        "consensus",
+        "redis"
+    ],
+    "author": "Chris Froehlingsdorf <chris@5cf.de>",
+    "license": "MIT",
+    "dependencies": {
+        "bull": "^3.0.0-rc.2",
+        "ioredis": "^3.1.1",
+        "log4bro": "^3.0.0",
+        "redlock": "^3.0.0",
+        "uuid": "^3.0.1"
+    }
+}
