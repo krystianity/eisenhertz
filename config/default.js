@@ -8,7 +8,7 @@ module.exports = {
     },
     redlock: {
         driftFactor: 0.01,
-        retryCount: 10,
+        retryCount: 2,
         retryDelay: 200,
         retryJitter: 200
     },
