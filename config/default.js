@@ -21,7 +21,7 @@ module.exports = {
     },
     properties: {
         name: "eh:empty",
-        maxJobsPerWorker: 1,
+        maxJobsPerWorker: 2,
         masterLock: "eh:master:lock",
         masterLockTtl: 2000,
         masterLockReAttempt: 4000
@@ -31,11 +31,11 @@ module.exports = {
         delay: 1000,
         attempts: 1,
         repeat: undefined,
-        backoff: 1000,
-        lifo: false,
-        timeout: undefined,
-        jobId: undefined,
-        removeOnComplete: false,
-        removeOnFail: false
+        backoff: undefined,
+        lifo: undefined,
+        timeout: undefined, //never
+        jobId: undefined, // will be set by TaskHandler
+        removeOnComplete: true, //yes
+        removeOnFail: true //yes
     }
 };
