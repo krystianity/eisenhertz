@@ -37,5 +37,8 @@ module.exports = {
         jobId: undefined, // will be set by TaskHandler
         removeOnComplete: true, //yes
         removeOnFail: true //yes
+    },
+    fork: {
+        module: "./fork/ForkProcess.js"
     }
 };
