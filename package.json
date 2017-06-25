@@ -1,6 +1,6 @@
 {
     "name": "eisenhertz",
-    "version": "1.1.0",
+    "version": "1.2.0",
     "description": "manage, cluster and scale processes with ease",
     "main": "index.js",
     "scripts": {
