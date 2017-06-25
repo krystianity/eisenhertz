@@ -16,15 +16,22 @@ const pc = data => {
     app.get("/test", (req, res) => {
         incomingRequests++;
         res.status(200).json({
-            message: "hi"
+            message: data.config.hi
         });
     });
 
-    app.listen(data.config.port);
+    app.get("/kill", (req, res) => {
+        res.status(200).end();
+        process.exit(4);
+    });
+
+    app.listen(data.config.port, () => {
+        fork.log("ready");
+    });
 };
 
 const mc = cb => {
-    cb({
+    cb(null, {
         incomingRequests
     });
 };

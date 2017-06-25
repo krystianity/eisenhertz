@@ -24,7 +24,7 @@ module.exports = {
         name: "eh:empty",
         maxJobsPerWorker: 2,
         masterLock: "eh:master:lock",
-        masterLockTtl: 2000,
+        masterLockTtl: 1000,
         masterLockReAttempt: 4000
     },
     jobOptions: {
