@@ -4,7 +4,7 @@
     "description": "manage, cluster and scale processes with ease",
     "main": "index.js",
     "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1"
+        "test": "_mocha --recursive --timeout 12500 -R spec test/int"
     },
     "keywords": [
         "scale",
@@ -29,5 +29,10 @@
         "merkury": "^1.1.0",
         "redlock": "^3.0.0",
         "uuid": "^3.0.1"
+    },
+    "devDependencies": {
+        "express": "^4.15.3",
+        "mocha": "^3.4.2",
+        "request": "^2.81.0"
     }
 }

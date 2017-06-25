@@ -1,4 +1,5 @@
 "use strict";
+
 module.exports = {
     prefix: "eh",
     redis: {
