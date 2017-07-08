@@ -32,10 +32,12 @@ describe("Service INT", function() {
             module: testModule
         }
     });
+    testConfig.properties.maxInstancesOfJobPerNode = 2; //allow for both instances to run on the same node
+
     const eisenhertz = new Eisenhertz(testConfig, defaultLogger());
     const jobs = [
-        "one",
-        "two",
+        "one:1",
+        "one:2",
     ];
 
     it("should be able to start service", function() {
@@ -50,12 +52,12 @@ describe("Service INT", function() {
 
             switch (id) {
 
-                case "one":
+                case "one:1":
                     config.port = 1337;
                     config.hi = "hi from one";
                     break;
 
-                case "two":
+                case "one:2":
                     config.port = 1338;
                     config.hi = "hi from two";
                     break;
@@ -140,7 +142,7 @@ describe("Service INT", function() {
 
     it("should be able to kill job globally", function() {
         jobs.splice(0, 1); //remove job "one" from fetch list
-        return eisenhertz.leader.removeJobAndKillProcesses("one"); //should not restart afterwards
+        return eisenhertz.leader.removeJobAndKillProcesses("one:1"); //should not restart afterwards
     });
 
     it("should await killing and restart", function(done) {

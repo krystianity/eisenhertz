@@ -25,7 +25,8 @@ module.exports = {
         maxJobsPerWorker: 2,
         masterLock: "eh:master:lock",
         masterLockTtl: 1000,
-        masterLockReAttempt: 4000
+        masterLockReAttempt: 4000,
+        maxInstancesOfJobPerNode: 1
     },
     jobOptions: {
         priority: 1,

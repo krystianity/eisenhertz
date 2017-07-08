@@ -141,7 +141,8 @@ parent systems that will run one of the two webservers.
         maxJobsPerWorker: 2,
         masterLock: "eh:master:lock",
         masterLockTtl: 2000,
-        masterLockReAttempt: 4000
+        masterLockReAttempt: 4000,
+        maxInstancesOfJobPerNode: 1
     },
     jobOptions: {
         priority: 1, 
@@ -159,4 +160,24 @@ parent systems that will run one of the two webservers.
         module: "./fork/ForkProcess.js"
     }
 }
+```
+
+## Controlling jobs on nodes
+
+```es6
+config.properties.maxInstancesOfJobPerNode
+/*
+    lets you limit the amount of instances of a job
+    that run on a single node, you can define a job instance
+    by using ":" as delimiter e.g. jobOne:1, jobOne:2 and jobOne:3
+    if the limit is reached, the node will return the job with
+    an error back to the queue after a small timeout
+*/
+
+config.properties.maxJobsPerWorker
+/*
+    lets you limit the amount of jobs per worker
+    it is usually a good idea to limit this to the amount
+    of cores (* 2 on intel systems) of the node's host
+*/
 ```
