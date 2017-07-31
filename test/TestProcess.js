@@ -36,4 +36,18 @@ const mc = cb => {
     });
 };
 
+fork.register("test-cb", (data, callback) => {
+    setTimeout(() => {
+        fork.log(data);
+        callback(null, "yeah")
+    }, 80);
+});
+
+fork.register("test-error", (data, callback) => {
+    setTimeout(() => {
+        fork.log(data);
+        callback(new Error("an error"))
+    }, 50);
+});
+
 fork.connect(pc, mc);

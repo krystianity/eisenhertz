@@ -111,6 +111,22 @@ describe("Service INT", function() {
         });
     });
 
+    it("should be able to run task", function(){
+        return eisenhertz.workerQueue.processes["one:1"].runTask("test-cb", {arg1: 123}).then(result => {
+            //console.log(result);
+            assert.ok(result);
+            return true;
+        });
+    });
+
+    it("should be able to catch error for bad task", function(done){
+        eisenhertz.workerQueue.processes["one:1"].runTask("test-error", {arg1: 321}).catch(error => {
+            //console.log(error);
+            assert.equal(error.message, "an error");
+            done();
+        });
+    });
+
     it("should be able to retrieve metrics for running processes", function() {
         return eisenhertz.workerQueue.gatherProcessMetrics().then(metrics => {
             //console.log(metrics);
