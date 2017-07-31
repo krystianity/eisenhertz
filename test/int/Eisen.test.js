@@ -127,6 +127,27 @@ describe("Service INT", function() {
         });
     });
 
+    it("should be able to run task via leader", function(){
+        return eisenhertz.leader.runTaskSearchForNode("one:1", "test-cb", {arg1: 123}).then(result => {
+            //console.log(result);
+            assert.ok(result);
+            return true;
+        });
+    });
+
+    it("should be able to catch error for bad task via leader", function(done){
+        eisenhertz.leader.runTaskSearchForNode("one:1","test-error", {arg1: 321}).catch(error => {
+            //console.log(error);
+            assert.equal(error.message, "an error");
+            done();
+        });
+    });
+
+    it("should see a cleared stack", function(done){
+        assert.equal(Object.keys(eisenhertz.leader.stack).length, 0);
+        done();
+    });
+
     it("should be able to retrieve metrics for running processes", function() {
         return eisenhertz.workerQueue.gatherProcessMetrics().then(metrics => {
             //console.log(metrics);
